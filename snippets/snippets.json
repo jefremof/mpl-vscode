@@ -1,0 +1,58 @@
+{
+	"New label": {
+		"scope": "mpl",
+		"prefix": ["Label","Declare"],
+		"body": [
+			"${1:label}: ${2:value};",
+			"$0"
+		],
+		"description": "Declares a new variable"
+	},
+    "New object": {
+		"scope": "mpl",
+		"prefix": ["Object", "Structure"],
+		"body": [
+			"${1:label}: { ${2:field}: ${3:value}; };",
+			"$0"
+		],
+		"description": "Declares a new structure"
+	},
+    "Callable": {
+		"scope": "mpl",
+		"prefix": ["Callable"],
+		"body": [
+			"${1:label}: { CALL: ${2:code};",
+            "};$0"
+		],
+		"description": "Declares a new callable"
+	},
+    "Function": {
+		"scope": "mpl",
+		"prefix": ["Function"],
+		"body": [
+			"${1:label}: [",
+            "\t${2/\\s+|(?<=\\S)$/:/g}$3",
+            "\t${4:code};",
+            "];",
+            "$0"
+		],
+		"description": "Declares a new function with arguments (separated by whitespaces)"
+	},
+	"If": {
+		"scope": "mpl",
+		"prefix": ["If"],
+		"body": [
+			"${1:condition} [${2:true}] [${3:false}] if$0"
+		],
+		"description": "If condition"
+	},
+    "pfunc": {
+		"scope": "mpl",
+		"prefix": ["pfunc", "pre"],
+		"body": [
+			"${1:label}: [${2:prev_cond}] [${3:code}] pfunc;",
+            "$0"
+		],
+		"description": "Declares a function using pfunc"
+	}
+}

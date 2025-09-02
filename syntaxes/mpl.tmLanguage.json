@@ -1,0 +1,226 @@
+{
+    "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+    "name": "MPL",
+    "scopeName": "source.mpl",
+    "patterns": [
+        {
+            "include": "#comments"
+        },
+        {
+            "include": "#literals"
+        },
+        {
+            "include": "#operators"
+        },
+        {
+            "include": "#keywords"
+        },
+        {
+            "include": "#builtins"
+        },
+        {
+            "include": "#labels"
+        },
+        {
+            "include": "#members"
+        },
+        {
+            "include": "#names"
+        },
+        {
+            "include": "#punctuation"
+        }
+    ],
+    "repository": {
+        "comments": {
+            "patterns": [
+                {
+                    "name": "comment.line.number-sign.mpl",
+                    "match": "#[^\\r\\n]*"
+                }
+            ]
+        },
+        "literals": {
+            "patterns": [
+                {
+                    "name": "string.quoted.double.mpl",
+                    "match": "\"(?:\\\\.|[^\"\\\\])*\""
+                },
+                {
+                    "name": "constant.numeric.real.mpl",
+                    "match": "(?:(?:[+-]?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)(?:[eE][+-]?[0-9]+)?)|(?:[+-]?(?:0|[1-9][0-9]*)(?:[eE][+-]?[0-9]+))|(?:[+-]?\\.[0-9]+(?:[eE][+-]?[0-9]+)?))(?:r32|r64)?\\b"
+                },
+                {
+                    "name": "constant.numeric.hex.mpl",
+                    "match": "0x[0-9A-Fa-f]+(?:(?:i8|i16|i32|i64|ix|n8|n16|n32|n64|nx)\\b)?"
+                },
+                {
+                    "name": "constant.numeric.integer.mpl",
+                    "match": "[+-]?(?:0|[1-9][0-9]*)(?:(?:i8|i16|i32|i64|ix|n8|n16|n32|n64|nx)\\b)?"
+                },
+                {
+                    "name": "constant.language.mpl",
+                    "match": "\\b(?:FALSE|TRUE|LF|COMPILER_VERSION|DEBUG)\\b"
+                }
+            ]
+        },
+        "labels": {
+            "patterns": [
+                {
+                    "match": "((?:(?:[+-](?:[+-]|[^+0-9!@,.:;{}()\"#\\[\\] \\t\\n\\r-])|[^+0-9!@,.:;{}()\"#\\[\\] \\t\\n\\r-])(?:[^+0-9!@,.:;{}()\"#\\[\\] \\t\\n\\r-]|[0-9]|[+-])*|[+-]))(:!)",
+                    "captures": {
+                        "1": {
+                            "name": "variable.name.identifier.mpl"
+                        },
+                        "2": {
+                            "name": "punctuation.definition.label.reset.mpl"
+                        }
+                    }
+                },
+                {
+                    "match": "((?:(?:[+-](?:[+-]|[^+0-9!@,.:;{}()\"#\\[\\] \\t\\n\\r-])|[^+0-9!@,.:;{}()\"#\\[\\] \\t\\n\\r-])(?:[^+0-9!@,.:;{}()\"#\\[\\] \\t\\n\\r-]|[0-9]|[+-])*|[+-]))(:)",
+                    "captures": {
+                        "1": {
+                            "name": "variable.name.identifier.mpl"
+                        },
+                        "2": {
+                            "name": "punctuation.definition.label.mpl"
+                        }
+                    }
+                },
+                {
+                    "match": ";",
+                    "name": "punctuation.terminator.label.mpl"
+                }
+            ]
+        },
+        "members": {
+            "patterns": [
+                {
+                    "match": "\\.@(?:(?:[+-](?:[+-]|[^+0-9!@,.:;{}()\"#\\[\\] \\t\\n\\r-])|[^+0-9!@,.:;{}()\"#\\[\\] \\t\\n\\r-])(?:[^+0-9!@,.:;{}()\"#\\[\\] \\t\\n\\r-]|[0-9]|[+-])*|[+-])",
+                    "name": "variable.other.read.member.mpl"
+                },
+                {
+                    "match": "\\.!(?:(?:[+-](?:[+-]|[^+0-9!@,.:;{}()\"#\\[\\] \\t\\n\\r-])|[^+0-9!@,.:;{}()\"#\\[\\] \\t\\n\\r-])(?:[^+0-9!@,.:;{}()\"#\\[\\] \\t\\n\\r-]|[0-9]|[+-])*|[+-])",
+                    "name": "variable.other.write.member.mpl"
+                },
+                {
+                    "match": "\\.(?:(?:[+-](?:[+-]|[^+0-9!@,.:;{}()\"#\\[\\] \\t\\n\\r-])|[^+0-9!@,.:;{}()\"#\\[\\] \\t\\n\\r-])(?:[^+0-9!@,.:;{}()\"#\\[\\] \\t\\n\\r-]|[0-9]|[+-])*|[+-])",
+                    "name": "variable.other.member.mpl"
+                }
+            ]
+        },
+        "names": {
+            "patterns": [
+                {
+                    "name": "entity.name.special.mpl",
+                    "match": "(?:@|!|&|,)(?!\\w)"
+                },
+                {
+                    "name": "variable.name.identifier.mpl",
+                    "match": "(?:(?:[+-](?:[+-]|[^+0-9!@,.:;{}()\"#\\[\\] \\t\\n\\r-])|[^+0-9!@,.:;{}()\"#\\[\\] \\t\\n\\r-])(?:[^+0-9!@,.:;{}()\"#\\[\\] \\t\\n\\r-]|[0-9]|[+-])*|[+-])"
+                },
+                {
+                    "match": "@(?:(?:[+-](?:[+-]|[^+0-9!@,.:;{}()\"#\\[\\] \\t\\n\\r-])|[^+0-9!@,.:;{}()\"#\\[\\] \\t\\n\\r-])(?:[^+0-9!@,.:;{}()\"#\\[\\] \\t\\n\\r-]|[0-9]|[+-])*|[+-])",
+                    "name": "variable.other.read.mpl"
+                },
+                {
+                    "match": "!(?:(?:[+-](?:[+-]|[^+0-9!@,.:;{}()\"#\\[\\] \\t\\n\\r-])|[^+0-9!@,.:;{}()\"#\\[\\] \\t\\n\\r-])(?:[^+0-9!@,.:;{}()\"#\\[\\] \\t\\n\\r-]|[0-9]|[+-])*|[+-])",
+                    "name": "variable.other.write.mpl"
+                }
+            ]
+        },
+        "keywords": {
+            "patterns": [
+                {
+                    "name": "keyword.control.mpl",
+                    "match": "\\b(?:call|if|loop|times|when|while|for)\\b"
+                },
+                {
+                    "name": "keyword.control.callable.mpl",
+                    "match": "\\b(?:bind|compose|func|pfunc)\\b"
+                },
+                {
+                    "name": "keyword.stack.mpl",
+                    "match": "\\b(?:drop|dup|nip|over|swap)\\b"
+                },
+                {
+                    "name": "keyword.control.import.mpl",
+                    "match": "\\b(?:use|useFile)\\b"
+                },
+                {
+                    "name": "support.function.io.mpl",
+                    "match": "\\b(?:print|printCompilerMaxAllocationSize|printCompilerMessage|printMatchingTree|printShadowEvents|printStack|printStackTrace)\\b"
+                }
+            ]
+        },
+        "builtins": {
+            "patterns": [
+                {
+                    "name": "support.function.builtin.mpl",
+                    "match": "\\b(?:addressToReference|alignment|array|attribute|call|callField|cast|ceil|code\\?|codeRef|codeRef\\?|codeTokenCount|codeTokenRead|compileOnce|const|cos|def|dynamic|exportFunction|exportVariable|failProc|fieldCount|fieldIndex|fieldIsRef|fieldIsVirtual|fieldName|fieldRead|fieldWrite|floor|getCallTrace|has|if|importFunction|importVariable|is|isCombined|isConst|isDirty|isDynamic|isRef|isStatic|log|log10|loop|manuallyDestroyVariable|manuallyInitVariable|mod|neg|new|newVarOfTheSameType|overload|private|raiseStaticError|recursive|same|schemaName|set|sin|sqrt|static|storageAddress|storageSize|textSize|textSplit|ucall|uif|unconst|use|virtual|virtual\\?)\\b"
+                }
+            ]
+        },
+        "operators": {
+            "patterns": [
+                {
+                    "name": "keyword.operator.arithmetic.mpl",
+                    "match": "(?:\\+|\\-|\\*|/|\\^)"
+                },
+                {
+                    "name": "keyword.operator.bitwise.mpl",
+                    "match": "(?:&&|\\|\\||\\b(?:and|or|xor|lshift|rshift)\\b|~)"
+                },
+                {
+                    "name": "keyword.operator.comparison.mpl",
+                    "match": "(?:<=|>=|<|>|=)"
+                },
+                {
+                    "name": "keyword.operator.special.mpl",
+                    "match": "(?:@|!|&|,)(?!\\w)"
+                }
+            ]
+        },
+        "punctuation": {
+            "patterns": [
+                {
+                    "name": "punctuation.section.braces.begin.mpl",
+                    "match": "\\{"
+                },
+                {
+                    "name": "punctuation.section.braces.end.mpl",
+                    "match": "\\}"
+                },
+                {
+                    "name": "punctuation.section.brackets.begin.mpl",
+                    "match": "\\["
+                },
+                {
+                    "name": "punctuation.section.brackets.end.mpl",
+                    "match": "\\]"
+                },
+                {
+                    "name": "punctuation.section.parens.begin.mpl",
+                    "match": "\\("
+                },
+                {
+                    "name": "punctuation.section.parens.end.mpl",
+                    "match": "\\)"
+                },
+                {
+                    "name": "punctuation.separator.comma.mpl",
+                    "match": ","
+                },
+                {
+                    "name": "punctuation.terminator.semicolon.mpl",
+                    "match": ";"
+                },
+                {
+                    "name": "punctuation.separator.colon.mpl",
+                    "match": ":"
+                }
+            ]
+        }
+    }
+}

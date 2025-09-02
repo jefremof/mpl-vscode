@@ -1,0 +1,89 @@
+{
+  "name": "mpl-vscode",
+  "displayName": "MPL Language Support",
+  "description": "This extension enables support for MPL in VS Code.",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.103.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Snippets"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "mpl",
+        "aliases": [
+          "MPL",
+          "mpl"
+        ],
+        "extensions": [
+          ".mpl"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "mpl",
+        "scopeName": "source.mpl",
+        "path": "./syntaxes/mpl.tmLanguage.json"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "mpl",
+        "path": "./snippets/snippets.json"
+      }
+    ],
+    "configuration": {
+      "title": "MPL",
+      "properties": {
+        "compiler.compilerPath": {
+          "type": "string",
+          "default": "mplc",
+          "description": "Path to the MPL compiler executable",
+          "scope": "machineOverridable"
+        },
+        "compiler.includePath": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [
+            "./sl"
+          ],
+          "description": "Default include paths",
+          "scope": "machineOverridable"
+        },
+        "compiler.triple": {
+          "type": "string",
+          "default": "",
+          "description": "Target triple. If empty, uses the compiler default.",
+          "scope": "machineOverridable"
+        }
+      }
+    },
+    "commands": [
+      {
+        "command": "mpl.buildProject",
+        "title": "MPL: Build Active Project"
+      }
+    ]
+  },
+  "devDependencies": {
+    "@types/node": "^24.3.0",
+    "typescript": "^5.9.2",
+    "vscode": "^1.1.37"
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "main": "./out/extension.js",
+  "activationEvents": [
+    "onLanguage:mpl"
+  ]
+}
