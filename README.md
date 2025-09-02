@@ -3,11 +3,11 @@
 This extension provides support for the [MPL programming language](https://github.com/Matway/mpl-c).
 It was put together quickly, contains bugs and inaccuracies, and has not been tested.
 
-![Definitions Navigation](./static/traversal.gif)
+![Definitions Navigation](./static/Traversal.gif)
 
 ![Syntax Highlighting](./static/syntax.png)
 
-![Snippets](./static/snippets.gif)
+![Snippets](./static/Snippets.gif)
 
 
 It offers the following features:
@@ -17,7 +17,7 @@ It offers the following features:
 - Navigation to global definitions within the project
 
 ## Navigation
-Requires [MPL MetaInfo fork](https://github.com/jefremof/mpl-c).\
+Requires [MPL MetaInfo fork](https://github.com/jefremof/mpl-c/tree/meta-info-patch).\
 Also requires `mpl.json` config file to be located higher up the directory tree relative to the active file.
 
 ## Compilation task
